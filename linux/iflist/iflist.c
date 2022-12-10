@@ -9,8 +9,10 @@
 
 int main()
 {
+    /* man 3 getifaddrs */
     struct ifaddrs *addresses;
 
+    /* man 3 getifaddrs */
     if (getifaddrs(&addresses) == -1)
     {
         fprintf(stderr, "getifaddrs() failed. (%d)\n", GETSOCKETERRNO());
@@ -29,6 +31,7 @@ int main()
             char ap[100];
             const int family_size = family == AF_INET ?
                 sizeof(struct sockaddr_in) : sizeof(struct sockaddr_in6);
+            /* man 3 getnameinfo */
             getnameinfo(address->ifa_addr,
                     family_size, ap, sizeof(ap), 0, 0, NI_NUMERICHOST);
             printf("\t%s\n", ap);
@@ -37,6 +40,7 @@ int main()
         address = address->ifa_next;
     }
 
+    /* man 3 freeifaddrs */
     freeifaddrs(addresses);
     return 0;
 }
