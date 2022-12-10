@@ -1,6 +1,4 @@
 # C Network Programming
-
-## Contents
 ### iflist
 List the local network addresses on a Unix-based system.
 #### Resources
